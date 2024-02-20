@@ -1,0 +1,12 @@
+<div>
+  <div *ngIf="this.userService.loggedIn()">
+    <p>
+      Willkommen zurück, {{this.userService.user?.firstName}}
+    </p>
+  </div>
+</div>
+
+<div>
+  <button mat-raised-button color="accent" (click)="logout()">Abmelden</button>
+</div>
+

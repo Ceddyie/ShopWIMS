@@ -1,0 +1,31 @@
+.navHeader {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: mediumpurple;
+}
+
+.navHeaderHeading {
+  text-align: left;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-left: 1rem;
+
+}
+
+.navHeaderButtons {
+  padding-right: 1%;
+}
+
+button {
+  background: transparent;
+  border: none;
+  font-size: 1.7rem;
+  height: 100%;
+}
+button:hover {
+  background-color: rebeccapurple;
+}
+
