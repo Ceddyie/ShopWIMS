@@ -33,7 +33,7 @@ export class OrdersComponent implements OnInit {
   private getOrdersByCustomer(id: number | undefined) {
     this.orderService.getOrdersByCustomer(id).subscribe((response) => {
       this.orders = response;
-      if (this.orders) {
+      if (!this.orders) {
         this.status = "Shipped";
       } else {
         this.status = "In progress";
