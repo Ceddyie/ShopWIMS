@@ -6,6 +6,24 @@
   </div>
 </div>
 
+<br>
+
+<div class="card-div">
+    <mat-card *ngFor="let product of products" class="product-card">
+        <mat-card-header style="background-color: beige;">
+            <mat-card-title>{{ product.productName }}</mat-card-title>
+            <mat-card-subtitle>Product ID: {{ product.productId }}</mat-card-subtitle>
+            <br>
+        </mat-card-header>
+        <img mat-card-image src="{{ product.imageUrl }}" alt="{{ product.productName }}"/>
+        <mat-card-title style="text-align: center">Price: {{ product.price }}€</mat-card-title>
+        <mat-card-actions style="text-align: center">
+            <button mat-button (click) = "openOrder()">ORDER</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+
 <div>
   <button mat-raised-button color="accent" (click)="logout()">Abmelden</button>
 </div>

@@ -27,13 +27,13 @@ export class UserService {
 
   public checkUserExistence(username: string, password: string): User | undefined {
     console.log(username);
-    this.httpClient.post<User>('http://localhost:8080/user/login', {
+    this.httpClient.post<User>('http://localhost:8082/user/login', {
       username: username,
       password: password,
     }, {observe: "response"}).subscribe(response => {
       console.log(response.body);
       if (200 == response.status) {
-        this.openSnackBar("Anmeldung erfolgreich", "Okay");
+        this.openSnackBar("Login successful", "Okay");
         this.user = response.body;
         console.log(this._user);
         this.router.navigate(["/home"]);
@@ -42,10 +42,10 @@ export class UserService {
       return new User(23, "aaa", "aa", "aaa", "aaa", "aaa");
     }, error => {
       if (error.status == 404) {
-        this.openSnackBar("Nicht registriert", "Okay");
+        this.openSnackBar("Not registered", "Okay");
       };
       if (error.status == 401) {
-        this.openSnackBar("Falsches Passwort", "Okay");
+        this.openSnackBar("Wrong password", "Okay");
       }
     });
     return undefined;
@@ -55,5 +55,26 @@ export class UserService {
     this.matSnackBar.open(message, action, {
       duration: 3000,
     });
+  }
+
+  registerUser(username: any, email: any, password: any, firstName: any, lastName: any) {
+    this.httpClient.post<User>('http://localhost:8082/user/register', {
+      username: username,
+      email: email,
+      password: password,
+      firstName: firstName,
+      lastName: lastName
+    }, {observe: "response"}).subscribe(response => {
+      console.log(response.body);
+      if (response.status == 201) {
+        this.openSnackBar("Registration successful", "Okay");
+        this.user = response.body;
+        console.log(this._user);
+      }
+    }, error => {
+      if (error.status == 409) {
+        this.openSnackBar("Email/Username already in use", "Okay");
+      }
+    })
   }
 }

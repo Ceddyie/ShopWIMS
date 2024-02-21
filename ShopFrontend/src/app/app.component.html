@@ -16,7 +16,7 @@
 </head>
 
 <body class="body">
-<app-navbar></app-navbar>
+<app-navbar *ngIf="!hasRoute('login')"></app-navbar>
 
 <div class="contentPane">
   <router-outlet>

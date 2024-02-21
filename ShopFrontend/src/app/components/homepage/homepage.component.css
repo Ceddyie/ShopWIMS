@@ -1,0 +1,16 @@
+mat-card {
+    max-width: 15%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
+
+mat-card img {
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.card-div {
+    display: flex;
+    justify-content: center;
+}

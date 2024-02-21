@@ -1,4 +1,20 @@
+mat-slide-toggle {
+  flex: 0 1 auto;
+  width: 150px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 form {
-  width: 500px;
-  text-align: center;
+  display: flex;
+  margin: auto;
+  max-width: 750px;
+  max-height: 750px;
+  flex-direction: column;
+}
+
+.div-page {
+  padding-top: 10%;
 }

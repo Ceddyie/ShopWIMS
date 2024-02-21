@@ -1,19 +1,43 @@
 <div class="div-page">
   <div class="div-form">
-    <form>
-      <mat-form-field appearance="fill" >
-        <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="username" name="emailForm">
-      </mat-form-field>
-    </form>
-    <form>
-      <mat-form-field class="example-full-width" appearance="fill" >
-        <mat-label>Password</mat-label>
-        <input matInput [(ngModel)]="password"name="codeForm" type="password">
-      </mat-form-field>
-    </form>
-  </div>
-  <div class="div-buttons">
-    <button mat-raised-button color="primary" (click)="processLogin()">Login</button>
+      <mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle>
+      <br>
+      <form class="login-form" *ngIf="!isChecked">
+          <h1>Login:</h1>
+          <mat-form-field appearance="fill" >
+              <mat-label>Username</mat-label>
+              <input matInput [(ngModel)]="username" name="usernameForm" required>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill" >
+              <mat-label>Password</mat-label>
+              <input matInput [(ngModel)]="password"name="codeForm" type="password" required>
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="processLogin()" [disabled]="password == '' || username == ''">Login</button>
+      </form>
+      <form class="login-form" *ngIf="isChecked">
+          <h1>Register:</h1>
+          <mat-form-field appearance="fill">
+              <mat-label>Username</mat-label>
+              <input matInput [(ngModel)]="usernameRegister" name="usernameForm" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" [(ngModel)]="email" name="emailForm" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" [(ngModel)]="passwordRegister" name="passwordForm" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>First Name</mat-label>
+              <input matInput [(ngModel)]="firstName" name="firstNameForm" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Last Name</mat-label>
+              <input matInput [(ngModel)]="lastName" name="lastNameForm" required>
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="processRegistration()"
+                  [disabled]="passwordRegister == '' || usernameRegister == '' || email == '' || lastName == '' || firstName == '' || passwordRegister.length < 8">Register</button>
+      </form>
   </div>
 </div>
