@@ -1,14 +1,19 @@
 <div class="navHeader">
   <div class="navHeaderHeading">
-    <h1>Webshop</h1>
+    <button routerLink="/home">
+        <h1>Webshop</h1>
+    </button>
   </div>
 
   <div class="navHeaderButtons">
-    <button>
-      <span class="material-symbols-outlined">shopping_cart</span>
-    </button>
-    <button>
-      <span class="material-symbols-outlined">person</span>
-    </button>
+      <button>
+          <span class="material-symbols-outlined" routerLink="/orders">shopping_cart</span>
+      </button>
+      <button>
+          <span class="material-symbols-outlined">person</span>
+      </button>
+      <button (click)="logout()">
+        <span class="material-symbols-outlined">logout</span>
+      </button>
   </div>
 </div>

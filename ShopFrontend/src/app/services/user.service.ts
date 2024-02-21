@@ -8,9 +8,14 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   providedIn: 'root'
 })
 export class UserService {
-  private _user: User | null;
+  private _user: User | null
   constructor(public router: Router, public httpClient: HttpClient, private matSnackBar: MatSnackBar) {
-    this._user = null;
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      this._user = JSON.parse(userData);
+    } else {
+      this._user = null;
+    }
   }
 
   public get user(): User | null {
@@ -35,6 +40,7 @@ export class UserService {
       if (200 == response.status) {
         this.openSnackBar("Login successful", "Okay");
         this.user = response.body;
+        localStorage.setItem('user', JSON.stringify(this._user));
         console.log(this._user);
         this.router.navigate(["/home"]);
         return this._user;

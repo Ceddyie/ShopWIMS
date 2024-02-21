@@ -23,30 +23,30 @@ public class Order {
     private String productId;
 
     @Column
-    private double totalCost;
+    private int amount;
 
     @Column
-    private String address;
+    private double totalCost;
 
     @Column
     private boolean shipped;
 
     public Order() {}
 
-    public Order(Long id, Long customerId, String productId, double totalCost, String address, boolean shipped) {
+    public Order(Long id, Long customerId, String productId, int amount, double totalCost, boolean shipped) {
         this.id = id;
         this.customerId = customerId;
         this.productId = productId;
+        this.amount = amount;
         this.totalCost = totalCost;
-        this.address = address;
         this.shipped = shipped;
     }
 
-    public Order(Long customerId, String productId, double totalCost, String address, boolean shipped) {
+    public Order(Long customerId, String productId, int amount, double totalCost, boolean shipped) {
         this.customerId = customerId;
         this.productId = productId;
+        this.amount = amount;
         this.totalCost = totalCost;
-        this.address = address;
         this.shipped = shipped;
     }
 }

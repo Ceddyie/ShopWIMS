@@ -12,6 +12,7 @@ import {
     MatCardTitle
 } from "@angular/material/card";
 import {ProductService} from "../../services/product.service";
+import {OrderDialogComponent} from "../order-dialog/order-dialog.component";
 
 @Component({
   selector: 'app-homepage',
@@ -32,14 +33,14 @@ import {ProductService} from "../../services/product.service";
 })
 export class HomepageComponent implements  OnInit {
     products: any = [];
-  constructor(public userService: UserService, public dialog: MatDialog, private productService: ProductService) {
+  constructor(public userService: UserService, public dialog: MatDialog, private productService: ProductService, private matDialog: MatDialog) {
   }
 
   ngOnInit() {
       this.getAllProducts();
-    /*if (!this.userService.loggedIn()) {
+    if (!this.userService.loggedIn()) {
       this.userService.router.navigateByUrl("/login");
-    }*/
+    }
   }
 
   public logout() {
@@ -56,7 +57,17 @@ export class HomepageComponent implements  OnInit {
         })
     }
 
-    openOrder() {
+    openOrder(productId: string, productName: string, price: number) {
+        this.openDialog(productId, productName, price);
+    }
 
+    private openDialog(productId: string, productName: string, price: number) {
+        this.matDialog.open(OrderDialogComponent, {
+            data: {
+                productId: productId,
+                productName: productName,
+                price: price
+            },
+        })
     }
 }

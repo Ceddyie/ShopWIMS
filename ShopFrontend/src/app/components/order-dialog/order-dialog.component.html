@@ -1,0 +1,23 @@
+<div>
+    <form>
+        <mat-form-field>
+            <mat-label>Product ID</mat-label>
+            <input matInput [(ngModel)]="productId" name="productId" readonly value="{{data.productId}}">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Product Name</mat-label>
+            <input matInput [(ngModel)]="productName" name="productName" readonly value="{{data.productName}}">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Amount</mat-label>
+            <input matInput [(ngModel)]="amount" name="amount" type="number" required>
+        </mat-form-field>
+        <br>
+        <mat-label>Price: {{data.price * amount | number: '1.0-2' }}€</mat-label>
+        <br>
+        <button mat-button (click)="submitOrder()" type="submit">Order</button>
+    </form>
+</div>
+

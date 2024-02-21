@@ -1,0 +1,24 @@
+<div class="content-pane">
+    <h1>Your orders:</h1>
+
+    <table class="styledTable">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td>{{order.id}}</td>
+                <td>{{order.productId}}</td>
+                <td>{{order.productName}}</td>
+                <td>{{order.amount}}</td>
+                <td>{{status}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
