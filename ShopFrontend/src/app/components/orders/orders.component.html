@@ -6,7 +6,6 @@
             <tr>
                 <th>Order ID</th>
                 <th>Product ID</th>
-                <!--<th>Product Name</th>-->
                 <th>Amount</th>
                 <th>Status</th>
             </tr>
@@ -15,9 +14,8 @@
             <tr *ngFor="let order of orders">
                 <td>{{order.id}}</td>
                 <td>{{order.productId}}</td>
-                <!--<td>{{order.productName}}</td>-->
                 <td>{{order.amount}}</td>
-                <td>{{status}}</td>
+                <td>{{order.shipped ? 'Shipped' : 'In Progress'}}</td>
             </tr>
         </tbody>
     </table>

@@ -49,4 +49,9 @@ public class Order {
         this.totalCost = totalCost;
         this.shipped = shipped;
     }
+
+    public Order (Long id, boolean shipped) {
+        this.id = id;
+        this.shipped = shipped;
+    }
 }

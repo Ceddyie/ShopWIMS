@@ -1,5 +1,6 @@
 package org.example.shopbackend.order;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -9,11 +10,11 @@ import java.io.IOException;
 @Service
 public class ShippedConsumer {
     @Autowired
-    private OrderController orderController;
+    private OrderService orderService;
 
     @KafkaListener(topics = "shipped_order")
-    public void consumeOrderId(Long orderId) throws IOException {
+    public void consumeOrderId(long orderId) throws IOException {
         System.out.println(String.format("##########\nConsumed Order Id-> %s\n##########", orderId));
-        orderController.updateOrder(orderId);
+        orderService.updateOrder(orderId);
     }
 }

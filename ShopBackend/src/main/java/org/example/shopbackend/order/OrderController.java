@@ -38,14 +38,6 @@ public class OrderController {
         return new ResponseEntity<Order>(order, HttpStatus.OK);
     }
 
-    public void updateOrder(Long orderId) {
-        Order order = orderRepository.findById(orderId).get();
-        order.setShipped(true);
-        orderRepository.save(order);
-        System.out.println(order);
-        System.out.println("Order is shipped");
-    }
-
     @GetMapping("/getByCustomer/{customerId}")
     public List<Order> getOrdersByCustomer (@PathVariable long customerId) {
         return orderService.getOrdersByCustomer(customerId);
