@@ -14,6 +14,7 @@ public class OrderProducer {
     private String ORDER_TOPIC = "order_topic";
 
     public void produceOrder(Order order) {
+        order.setTimestamp(System.currentTimeMillis());
         ObjectMapper mapper = new ObjectMapper();
         String orderJsonString = null;
         try {

@@ -6,7 +6,6 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-@Entity
 @Table(name = "orders")
 public class Order {
     @Id
@@ -30,6 +29,8 @@ public class Order {
 
     @Column
     private boolean shipped;
+
+    private long timestamp;
 
     public Order() {}
 
