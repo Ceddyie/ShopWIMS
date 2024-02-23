@@ -33,4 +33,16 @@ public class OrderService {
             throw new RuntimeException("Fail");
         }
     }
+
+    public Order saveOrder(Order order) {
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        namedParameters.addValue("customer_id", order.getCustomerId());
+        namedParameters.addValue("product_id", order.getProductId());
+        namedParameters.addValue("shipped", order.isShipped());
+        namedParameters.addValue("total_cost", order.getTotalCost());
+        namedParameters.addValue("amount", order.getAmount());
+
+        jdbcTemplate.update("INSERT INTO orders (customer_id, product_id, shipped, total_cost, amount) VALUES (:customer_id, :product_id, :shipped, :total_cost, :amount)", namedParameters);
+        return order;
+    }
 }

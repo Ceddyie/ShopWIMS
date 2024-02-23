@@ -6,10 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -24,14 +20,11 @@ public class OrderController {
     }
 
     @Autowired
-    private OrderRepository orderRepository;
-
-    @Autowired
     private OrderService orderService;
 
     @PostMapping("/produce")
     public ResponseEntity<Order> saveAndProduceOrder (@RequestBody Order order) {
-        Order orderWithId = orderRepository.save(order);
+        Order orderWithId = orderService.saveOrder(order);
         System.out.println(orderWithId);
         orderProducer.produceOrder(orderWithId);
         System.out.println("Order sent");
